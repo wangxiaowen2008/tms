@@ -1,0 +1,36 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+### 项目目录结构
+
+```
+controller: src/main/java/com/paob/tms/web/controller  --页面请求拦截，响应结果对象不需要封装
+
+dto: src/main/java/com/paob/tms/dto/req   --页面请求封装的类路径
+
+dto: src/main/java/com/paob/tms/dto/resp  --响应结果封装的类路径
+
+mapper: src/main/java/com/paob/tms/mapper   --MyBatis的Mapper接口，定义了数据库操作的方法
+
+model: src/main/java/com/paob/tms/model   --与数据库表操作的实体类
+
+service：src/main/java/com/paob/tms/service    --服务接口类路径
+
+service：src/main/java/com/paob/tms/service/impl    --服务实现类路径
+
+mapping:  src/main/java/com/paob/tms/mapping     --model与dto类进行转换
+```
+
+### 限制
+
+```
+1.框架技术使用springboot3，mybatis-plus
+2.jdk版本使用jdk17
+3.数据库使用postgresql
+4.分页使用mybatis-plus
+5.响应结果不做任何封装
+6.类，方法，属性有必要做注释，并添加swagger2
+```
+

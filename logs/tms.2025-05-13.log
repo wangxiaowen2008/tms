@@ -1,0 +1,664 @@
+2025-05-13 13:47:27.115 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2025-05-13 13:47:27.347 [main] INFO  com.paob.tms.TmsApplication - Starting TmsApplication using Java 17.0.0.1 with PID 6032 (D:\work\paob_tms1\target\classes started by wangxiaowen in D:\work\paob_tms1)
+2025-05-13 13:47:27.351 [main] DEBUG com.paob.tms.TmsApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2025-05-13 13:47:27.353 [main] INFO  com.paob.tms.TmsApplication - The following 1 profile is active: "dev"
+2025-05-13 13:47:35.795 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-13 13:47:35.819 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-13 13:47:35.835 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-13 13:47:35.835 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2025-05-13 13:47:36.083 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-13 13:47:36.098 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 8508 ms
+2025-05-13 13:47:37.450 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.FpsDwRepo ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 13:47:37.491 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.RiskMonitoring ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 13:47:37.545 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.dto.resp.SubjectBalanceDetailResp ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 13:47:39.376 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1f53456f-8d5f-493c-84e5-cf241e6f1d35
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13 13:47:40.287 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@300a38e7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5c9a4f3b, org.springframework.security.web.context.SecurityContextHolderFilter@5ab5924c, org.springframework.security.web.header.HeaderWriterFilter@5b665a30, org.springframework.security.web.authentication.logout.LogoutFilter@4e4d0a0b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@37cfda1c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ab33ca8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2bb0e277, org.springframework.security.web.access.ExceptionTranslationFilter@7b451bf4, org.springframework.security.web.access.intercept.AuthorizationFilter@78128dd0]
+2025-05-13 13:47:40.882 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-13 13:47:40.952 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-05-13 13:47:40.979 [main] INFO  com.paob.tms.TmsApplication - Started TmsApplication in 15.531 seconds (process running for 17.205)
+2025-05-13 13:47:47.356 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13 13:47:47.356 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-13 13:47:47.359 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-05-13 13:47:50.825 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2192 ms
+2025-05-13 13:48:36.033 [http-nio-8080-exec-3] INFO  c.p.t.w.controller.JournalController - 下载凭证模板
+2025-05-13 13:49:18.584 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: com.paob.tms.common.BusinessException: 模板文件不存在] with root cause
+com.paob.tms.common.BusinessException: 模板文件不存在
+	at com.paob.tms.service.impl.JournalServiceImpl.downloadTemplate(JournalServiceImpl.java:328)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698)
+	at com.paob.tms.service.impl.JournalServiceImpl$$SpringCGLIB$$0.downloadTemplate(<generated>)
+	at com.paob.tms.web.controller.JournalController.downloadTemplate(JournalController.java:74)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-05-13 13:52:57.955 [http-nio-8080-exec-2] INFO  c.p.t.w.controller.JournalController - 下载凭证模板
+2025-05-13 15:32:50.840 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2025-05-13 15:32:51.088 [main] INFO  com.paob.tms.TmsApplication - Starting TmsApplication using Java 17.0.0.1 with PID 19644 (D:\work\paob_tms1\target\classes started by wangxiaowen in D:\work\paob_tms1)
+2025-05-13 15:32:51.088 [main] DEBUG com.paob.tms.TmsApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2025-05-13 15:32:51.088 [main] INFO  com.paob.tms.TmsApplication - The following 1 profile is active: "dev"
+2025-05-13 15:32:57.235 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-13 15:32:57.274 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-13 15:32:57.276 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-13 15:32:57.276 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2025-05-13 15:32:57.601 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-13 15:32:57.601 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6379 ms
+2025-05-13 15:32:59.104 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.FpsDwRepo ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 15:32:59.148 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.RiskMonitoring ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 15:32:59.201 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.dto.resp.SubjectBalanceDetailResp ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 15:33:00.973 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 2db8920c-8643-4980-a65e-b010126ce6eb
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13 15:33:01.817 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e3ee128, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7d64a960, org.springframework.security.web.context.SecurityContextHolderFilter@31f31b20, org.springframework.security.web.header.HeaderWriterFilter@2d6a0766, org.springframework.security.web.authentication.logout.LogoutFilter@2e29f28e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b544732, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@333d44f6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@166ce247, org.springframework.security.web.access.ExceptionTranslationFilter@29c1249a, org.springframework.security.web.access.intercept.AuthorizationFilter@4b691611]
+2025-05-13 15:33:02.437 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-13 15:33:02.491 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-05-13 15:33:02.531 [main] INFO  com.paob.tms.TmsApplication - Started TmsApplication in 13.084 seconds (process running for 14.869)
+2025-05-13 15:33:39.304 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13 15:33:39.305 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-13 15:33:39.322 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
+2025-05-13 15:33:46.663 [http-nio-8080-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 5735 ms
+2025-05-13 16:28:24.608 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2025-05-13 16:28:24.763 [main] INFO  com.paob.tms.TmsApplication - Starting TmsApplication using Java 17.0.0.1 with PID 24740 (D:\work\paob_tms1\target\classes started by wangxiaowen in D:\work\paob_tms1)
+2025-05-13 16:28:24.763 [main] DEBUG com.paob.tms.TmsApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2025-05-13 16:28:24.766 [main] INFO  com.paob.tms.TmsApplication - The following 1 profile is active: "dev"
+2025-05-13 16:28:29.897 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-13 16:28:29.928 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-13 16:28:29.929 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-13 16:28:29.929 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2025-05-13 16:28:30.169 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-13 16:28:30.185 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5268 ms
+2025-05-13 16:28:31.552 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.FpsDwRepo ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 16:28:31.601 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.RiskMonitoring ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 16:28:31.666 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.dto.resp.SubjectBalanceDetailResp ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 16:28:33.444 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1bd12835-ed94-448f-9baa-1800a85ed74c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13 16:28:34.267 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7b451bf4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@844e66d, org.springframework.security.web.context.SecurityContextHolderFilter@45b96e4c, org.springframework.security.web.header.HeaderWriterFilter@320ff86f, org.springframework.security.web.authentication.logout.LogoutFilter@9205c0a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b691611, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7d64a960, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5b665a30, org.springframework.security.web.access.ExceptionTranslationFilter@32b46831, org.springframework.security.web.access.intercept.AuthorizationFilter@5b3518e1]
+2025-05-13 16:28:34.850 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-13 16:28:34.904 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-05-13 16:28:34.934 [main] INFO  com.paob.tms.TmsApplication - Started TmsApplication in 11.916 seconds (process running for 14.042)
+2025-05-13 16:28:58.966 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13 16:28:58.966 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-13 16:28:58.972 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2025-05-13 16:29:03.029 [http-nio-8080-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2818 ms
+2025-05-13 16:29:56.115 [http-nio-8080-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-13 16:29:56.941 [http-nio-8080-exec-8] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@49d67572
+2025-05-13 16:29:56.947 [http-nio-8080-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-05-13 16:59:56.077 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-13 16:59:56.095 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-05-13 17:27:02.982 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2025-05-13 17:27:03.140 [main] INFO  com.paob.tms.TmsApplication - Starting TmsApplication using Java 17.0.0.1 with PID 13888 (D:\work\paob_tms1\target\classes started by wangxiaowen in D:\work\paob_tms1)
+2025-05-13 17:27:03.140 [main] DEBUG com.paob.tms.TmsApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2025-05-13 17:27:03.140 [main] INFO  com.paob.tms.TmsApplication - The following 1 profile is active: "dev"
+2025-05-13 17:27:12.462 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-13 17:27:12.486 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-13 17:27:12.486 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-13 17:27:12.486 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2025-05-13 17:27:13.005 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-13 17:27:13.016 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 9685 ms
+2025-05-13 17:27:15.624 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.FpsDwRepo ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 17:27:15.661 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.RiskMonitoring ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 17:27:15.715 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.dto.resp.SubjectBalanceDetailResp ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 17:27:17.888 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 2c2ab82d-8f13-4b6c-ad8e-1d72f904949a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13 17:27:19.203 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@65e620b0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@74b97416, org.springframework.security.web.context.SecurityContextHolderFilter@144a5e6e, org.springframework.security.web.header.HeaderWriterFilter@d66502, org.springframework.security.web.authentication.logout.LogoutFilter@5d27b4c1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7de3206d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5635bcd2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74707df8, org.springframework.security.web.access.ExceptionTranslationFilter@65753724, org.springframework.security.web.access.intercept.AuthorizationFilter@467af68c]
+2025-05-13 17:27:19.860 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-13 17:27:19.918 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-05-13 17:27:19.938 [main] INFO  com.paob.tms.TmsApplication - Started TmsApplication in 18.951 seconds (process running for 20.761)
+2025-05-13 17:28:54.037 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13 17:28:54.039 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-13 17:28:54.044 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2025-05-13 17:28:57.337 [http-nio-8080-exec-3] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2246 ms
+2025-05-13 17:36:32.582 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2025-05-13 17:36:32.724 [main] INFO  com.paob.tms.TmsApplication - Starting TmsApplication using Java 17.0.0.1 with PID 30304 (D:\work\paob_tms1\target\classes started by wangxiaowen in D:\work\paob_tms1)
+2025-05-13 17:36:32.725 [main] DEBUG com.paob.tms.TmsApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2025-05-13 17:36:32.726 [main] INFO  com.paob.tms.TmsApplication - The following 1 profile is active: "dev"
+2025-05-13 17:36:36.581 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-13 17:36:36.607 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-13 17:36:36.609 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-13 17:36:36.611 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2025-05-13 17:36:36.893 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-13 17:36:36.897 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4015 ms
+2025-05-13 17:36:38.029 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.FpsDwRepo ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 17:36:38.064 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.model.RiskMonitoring ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 17:36:38.115 [main] WARN  c.b.m.c.injector.DefaultSqlInjector - class com.paob.tms.dto.resp.SubjectBalanceDetailResp ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-13 17:36:39.744 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: ed1d0408-7a2a-4166-b0f1-aed515d418a2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13 17:36:40.402 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@26a45089, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@75ed7512, org.springframework.security.web.context.SecurityContextHolderFilter@395a573c, org.springframework.security.web.header.HeaderWriterFilter@45b96e4c, org.springframework.security.web.authentication.logout.LogoutFilter@5c8ab9de, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7e3ee128, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@542c65d9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ab5924c, org.springframework.security.web.access.ExceptionTranslationFilter@192b472d, org.springframework.security.web.access.intercept.AuthorizationFilter@7b451bf4]
+2025-05-13 17:36:40.978 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-13 17:36:41.011 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-05-13 17:36:41.043 [main] INFO  com.paob.tms.TmsApplication - Started TmsApplication in 9.697 seconds (process running for 11.127)
+2025-05-13 17:36:56.394 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13 17:36:56.394 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-13 17:36:56.394 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-05-13 17:36:59.658 [http-nio-8080-exec-2] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2156 ms
+2025-05-13 17:37:47.055 [http-nio-8080-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-13 17:37:47.708 [http-nio-8080-exec-6] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7830d47c
+2025-05-13 17:37:47.708 [http-nio-8080-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-05-13 17:38:20.521 [http-nio-8080-exec-7] INFO  c.p.t.w.controller.JournalController - 编辑凭证，请求参数：[JournalDetailResp(booksNo=HK_SOB, curNo=USD, dataState=Y, effectiveDate=2024-01-01, journalSequence=J20240101003, journalStatus=2, segment1=800000, segmentList=[TmsCitJournal(tmsCitJournalId=5, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2024-01-01, curNo=USD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=5001, segment6=500101, segment7=0000, segment8=000000, segment9=0000, enteredDr=100000, enteredCr=0, accountedDr=780000, accountedCr=0, pEnteredDr=780000, pEnteredCr=0, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003), TmsCitJournal(tmsCitJournalId=6, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2025-01-01, curNo=HKD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=6001, segment6=600101, segment7=0000, segment8=000000, segment9=0000, enteredDr=0, enteredCr=780000, accountedDr=0, accountedCr=780000, pEnteredDr=0, pEnteredCr=780000, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003)])]
+2025-05-13 17:38:20.675 [http-nio-8080-exec-7] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: com.paob.tms.common.BusinessException: 凭证状态不是待复核或复核拒绝，不能进行编辑操作] with root cause
+com.paob.tms.common.BusinessException: 凭证状态不是待复核或复核拒绝，不能进行编辑操作
+	at com.paob.tms.service.impl.JournalServiceImpl.updateJournal(JournalServiceImpl.java:402)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:702)
+	at com.paob.tms.service.impl.JournalServiceImpl$$SpringCGLIB$$0.updateJournal(<generated>)
+	at com.paob.tms.web.controller.JournalController.updateJournal(JournalController.java:89)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-05-13 17:46:35.261 [http-nio-8080-exec-9] INFO  c.p.t.w.controller.JournalController - 编辑凭证，请求参数：[JournalDetailResp(booksNo=HK_SOB, curNo=USD, dataState=Y, effectiveDate=2024-01-01, journalSequence=J20240101003, journalStatus=2, segment1=800000, segmentList=[TmsCitJournal(tmsCitJournalId=5, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2024-01-01, curNo=USD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=5001, segment6=500101, segment7=0000, segment8=000000, segment9=0000, enteredDr=100000, enteredCr=0, accountedDr=780000, accountedCr=0, pEnteredDr=780000, pEnteredCr=0, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003), TmsCitJournal(tmsCitJournalId=6, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2025-01-01, curNo=HKD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=6001, segment6=600101, segment7=0000, segment8=000000, segment9=0000, enteredDr=0, enteredCr=780000, accountedDr=0, accountedCr=780000, pEnteredDr=0, pEnteredCr=780000, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003)])]
+2025-05-13 17:46:35.286 [http-nio-8080-exec-9] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: com.paob.tms.common.BusinessException: 借贷不平衡] with root cause
+com.paob.tms.common.BusinessException: 借贷不平衡
+	at com.paob.tms.service.impl.JournalServiceImpl.updateJournal(JournalServiceImpl.java:413)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:702)
+	at com.paob.tms.service.impl.JournalServiceImpl$$SpringCGLIB$$0.updateJournal(<generated>)
+	at com.paob.tms.web.controller.JournalController.updateJournal(JournalController.java:89)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-05-13 17:46:51.969 [http-nio-8080-exec-10] INFO  c.p.t.w.controller.JournalController - 编辑凭证，请求参数：[JournalDetailResp(booksNo=HK_SOB, curNo=USD, dataState=Y, effectiveDate=2024-01-01, journalSequence=J20240101003, journalStatus=2, segment1=800000, segmentList=[TmsCitJournal(tmsCitJournalId=5, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2024-01-01, curNo=USD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=5001, segment6=500101, segment7=0000, segment8=000000, segment9=0000, enteredDr=100000, enteredCr=0, accountedDr=780000, accountedCr=0, pEnteredDr=780000, pEnteredCr=0, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003), TmsCitJournal(tmsCitJournalId=6, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2025-01-01, curNo=HKD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=6001, segment6=600101, segment7=0000, segment8=000000, segment9=0000, enteredDr=0, enteredCr=780000, accountedDr=0, accountedCr=780000, pEnteredDr=0, pEnteredCr=780000, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003)])]
+2025-05-13 17:46:51.982 [http-nio-8080-exec-10] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: com.paob.tms.common.BusinessException: 借贷不平衡] with root cause
+com.paob.tms.common.BusinessException: 借贷不平衡
+	at com.paob.tms.service.impl.JournalServiceImpl.updateJournal(JournalServiceImpl.java:413)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:702)
+	at com.paob.tms.service.impl.JournalServiceImpl$$SpringCGLIB$$0.updateJournal(<generated>)
+	at com.paob.tms.web.controller.JournalController.updateJournal(JournalController.java:89)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-05-13 17:50:32.960 [http-nio-8080-exec-1] INFO  c.p.t.w.controller.JournalController - 编辑凭证，请求参数：[JournalDetailResp(booksNo=HK_SOB, curNo=USD, dataState=Y, effectiveDate=2024-01-01, journalSequence=J20240101003, journalStatus=2, segment1=800000, segmentList=[TmsCitJournal(tmsCitJournalId=5, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2024-01-01, curNo=USD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=5001, segment6=500101, segment7=0000, segment8=000000, segment9=0000, enteredDr=100000, enteredCr=0, accountedDr=20000, accountedCr=0, pEnteredDr=780000, pEnteredCr=0, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003), TmsCitJournal(tmsCitJournalId=6, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2025-01-01, curNo=HKD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=6001, segment6=600101, segment7=0000, segment8=000000, segment9=0000, enteredDr=0, enteredCr=20000, accountedDr=0, accountedCr=780000, pEnteredDr=0, pEnteredCr=780000, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003)])]
+2025-05-13 17:50:33.114 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: com.paob.tms.common.BusinessException: 借贷不平衡] with root cause
+com.paob.tms.common.BusinessException: 借贷不平衡
+	at com.paob.tms.service.impl.JournalServiceImpl.updateJournal(JournalServiceImpl.java:413)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:702)
+	at com.paob.tms.service.impl.JournalServiceImpl$$SpringCGLIB$$0.updateJournal(<generated>)
+	at com.paob.tms.web.controller.JournalController.updateJournal(JournalController.java:89)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-05-13 17:51:29.287 [http-nio-8080-exec-4] INFO  c.p.t.w.controller.JournalController - 编辑凭证，请求参数：[JournalDetailResp(booksNo=HK_SOB, curNo=USD, dataState=Y, effectiveDate=2024-01-01, journalSequence=J20240101003, journalStatus=2, segment1=800000, segmentList=[TmsCitJournal(tmsCitJournalId=5, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2024-01-01, curNo=USD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=5001, segment6=500101, segment7=0000, segment8=000000, segment9=0000, enteredDr=20000, enteredCr=0, accountedDr=20000, accountedCr=0, pEnteredDr=780000, pEnteredCr=0, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003), TmsCitJournal(tmsCitJournalId=6, tmsPostingRuleId=null, categoryName=明晰凭证, journalSequence=J20240101003, effectiveDate=2025-01-01, curNo=HKD, segment1=800000, segment2=TRADE, segment3=CC003, segment4=FX, segment5=6001, segment6=600101, segment7=0000, segment8=000000, segment9=0000, enteredDr=0, enteredCr=20000, accountedDr=0, accountedCr=780000, pEnteredDr=0, pEnteredCr=780000, journalLineDescription=美元兑换港币, journalStatus=2, writeOffs=N, readyState=READY003, dataState=Y, createdBy=SYSTEM, createdTime=2025-05-02T15:10:39.939588, updatedBy=SYSTEM, updatedTime=2025-05-02T15:10:39.939588, dataSource=null, dataId=null, balanceStatus=null, securNo=null, securType=10, marketNo=FX, dealNumber=100000, booksNo=HK_SOB, segment10=0000, segment11=0000, segment12=0000, segment13=0000, segment14=0000, msg=HK_SOB, attribute7=null, attribute1=null, attribute2=null, attribute3=null, attribute4=null, attribute5=null, attribute6=null, attribute8=null, attribute9=null, attribute10=null, flexibleStatus=Y, journalSource=1, journalTemp=10, journalName=FX, checkBy=system, checkDate=2025-05-06, recordPerson=RECORDER1, businessId=BIZ003)])]
+2025-05-13 17:51:30.500 [http-nio-8080-exec-4] INFO  c.p.t.s.impl.JournalServiceImpl - 凭证编辑成功，凭证编号：J20240101003
+2025-05-13 19:33:20.274 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m590ms225µs401ns).

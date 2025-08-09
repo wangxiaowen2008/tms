@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.RiskMonitoringMapper">
+    
+    <!-- 基础结果映射 -->
+    <resultMap id="BaseResultMap" type="com.paob.tms.model.RiskMonitoring">
+        <id column="isin" property="isin"/>
+        <id column="reporting_date" property="reportingDate"/>
+        <result column="remark" property="remark"/>
+        <result column="currency" property="currency"/>
+        <result column="price" property="price"/>
+        <result column="sum_of_hkd_amount" property="sumOfHkdAmount"/>
+        <result column="sum_of_notional_in_base_currency" property="sumOfNotionalInBaseCurrency"/>
+        <result column="maturity_date" property="maturityDate"/>
+        <result column="price_bgn" property="priceBgn"/>
+        <result column="price_bval" property="priceBval"/>
+        <result column="price_bchk" property="priceBchk"/>
+        <result column="final_price" property="finalPrice"/>
+        <result column="market_value" property="marketValue"/>
+        <result column="modified_duration" property="modifiedDuration"/>
+        <result column="oas_spread_dur_mid" property="oasSpreadDurMid"/>
+        <result column="dv01" property="dv01"/>
+        <result column="cs01" property="cs01"/>
+        <result column="dtd_percent_change" property="dtdPercentChange"/>
+        <result column="mtd_percent_change" property="mtdPercentChange"/>
+        <result column="ytd_percent_change" property="ytdPercentChange"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_by" property="updatedBy"/>
+        <result column="updated_time" property="updatedTime"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="batchInsert">
+        INSERT INTO tms_risk_monitoring (
+            reporting_date, remark, isin, currency, price, sum_of_hkd_amount,
+            sum_of_notional_in_base_currency, maturity_date, price_bgn, price_bval,
+            price_bchk, final_price, market_value, modified_duration, oas_spread_dur_mid,
+            dv01, cs01, dtd_percent_change, mtd_percent_change, ytd_percent_change,
+            created_by, created_time, updated_by, updated_time
+        ) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (
+                #{item.reportingDate}, #{item.remark}, #{item.isin}, #{item.currency},
+                #{item.price}, #{item.sumOfHkdAmount}, #{item.sumOfNotionalInBaseCurrency},
+                #{item.maturityDate}, #{item.priceBgn}, #{item.priceBval}, #{item.priceBchk},
+                #{item.finalPrice}, #{item.marketValue}, #{item.modifiedDuration},
+                #{item.oasSpreadDurMid}, #{item.dv01}, #{item.cs01}, #{item.dtdPercentChange},
+                #{item.mtdPercentChange}, #{item.ytdPercentChange}, #{item.createdBy},
+                #{item.createdTime}, #{item.updatedBy}, #{item.updatedTime}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 根据ISIN和报告日期查询 -->
+    <select id="selectByIsinAndReportingDate" resultMap="BaseResultMap">
+        SELECT *
+        FROM tms_risk_monitoring
+        WHERE isin = #{isin} AND reporting_date = #{reportingDate}
+    </select>
+
+    <!-- 查询交易数据中存在但风险监控数据中不存在的ISIN -->
+    <select id="selectMissingIsins" resultType="java.lang.String">
+        SELECT DISTINCT t.isin
+        FROM tms_trade_blotter t
+        WHERE t.isin IS NOT NULL
+        AND t.isin != ''
+        AND t.value_date &lt;= #{reportingDate}
+        AND t.maturity_date &gt;= #{reportingDate}
+        AND NOT EXISTS (
+            SELECT 1 FROM tms_risk_monitoring r
+            WHERE r.isin = t.isin
+            AND r.reporting_date = #{reportingDate}
+        )
+    </select>
+
+    <!-- 查询风险监控数据中存在但交易数据中不存在的ISIN -->
+    <select id="selectExtraIsins" resultType="java.lang.String">
+        SELECT DISTINCT r.isin
+        FROM tms_risk_monitoring r
+        WHERE r.reporting_date = #{reportingDate}
+        AND NOT EXISTS (
+            SELECT 1 FROM tms_trade_blotter t
+            WHERE t.isin = r.isin
+            AND t.value_date &lt;= #{reportingDate}
+            AND t.maturity_date &gt;= #{reportingDate}
+        )
+    </select>
+</mapper> 

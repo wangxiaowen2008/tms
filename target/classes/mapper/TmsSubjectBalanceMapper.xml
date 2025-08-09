@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.TmsSubjectBalanceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.paob.tms.model.TmsSubjectBalance">
+        <id column="id" property="id"/>
+        <result column="code_combination_id" property="codeCombinationId"/>
+        <result column="set_of_books_id" property="setOfBooksId"/>
+        <result column="books_name" property="booksName"/>
+        <result column="period_name" property="periodName"/>
+        <result column="currency_code" property="currencyCode"/>
+        <result column="segment1" property="segment1"/>
+        <result column="segment1_description" property="segment1Description"/>
+        <result column="segment2" property="segment2"/>
+        <result column="segment2_description" property="segment2Description"/>
+        <result column="segment3" property="segment3"/>
+        <result column="segment3_description" property="segment3Description"/>
+        <result column="segment4" property="segment4"/>
+        <result column="segment4_description" property="segment4Description"/>
+        <result column="acc_code1" property="accCode1"/>
+        <result column="acc_code1_name" property="accCode1Name"/>
+        <result column="acc_code2" property="accCode2"/>
+        <result column="acc_code2_name" property="accCode2Name"/>
+        <result column="acc_code3" property="accCode3"/>
+        <result column="acc_code3_name" property="accCode3Name"/>
+        <result column="segment6" property="segment6"/>
+        <result column="segment6_description" property="segment6Description"/>
+        <result column="segment7" property="segment7"/>
+        <result column="segment8" property="segment8"/>
+        <result column="segment8_description" property="segment8Description"/>
+        <result column="begin_balance_dr" property="beginBalanceDr"/>
+        <result column="begin_balance_cr" property="beginBalanceCr"/>
+        <result column="period_net_dr" property="periodNetDr"/>
+        <result column="period_net_cr" property="periodNetCr"/>
+        <result column="end_balance_dr" property="endBalanceDr"/>
+        <result column="end_balance_cr" property="endBalanceCr"/>
+        <result column="end_balance" property="endBalance"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 分页查询科目余额 -->
+    <select id="selectSubjectBalancePage" resultMap="BaseResultMap">
+        SELECT *
+        FROM tms_subject_balance
+        <where>
+            <if test="query.setOfBooksId != null and query.setOfBooksId != ''">
+                AND set_of_books_id = #{query.setOfBooksId}
+            </if>
+            <if test="query.segment1 != null and query.segment1 != ''">
+                AND segment1 = #{query.segment1}
+            </if>
+            <if test="query.periodName != null and query.periodName != ''">
+                AND period_name = #{query.periodName}
+            </if>
+        </where>
+        ORDER BY set_of_books_id, segment1, acc_code1, acc_code2, acc_code3
+    </select>
+
+    <!-- 根据组合代码ID查询科目余额详情 -->
+    <select id="selectByCodeCombinationId" resultMap="BaseResultMap">
+        SELECT *
+        FROM tms_subject_balance
+        WHERE code_combination_id = #{codeCombinationId}
+    </select>
+
+</mapper> 

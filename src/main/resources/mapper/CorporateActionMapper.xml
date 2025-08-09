@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.CorporateActionMapper">
+
+    <select id="selectPage" resultType="com.paob.tms.model.CorporateAction">
+        SELECT *
+        FROM tms_corporate_action
+        <where>
+            <if test="req.remark != null and req.remark != ''">
+                AND remark = #{req.remark}
+            </if>
+            <if test="req.actionType != null and req.actionType != ''">
+                AND action_type = #{req.actionType}
+            </if>
+            <if test="req.tradeNumber != null and req.tradeNumber != ''">
+                AND trade_numbers LIKE CONCAT('%', #{req.tradeNumber}, '%')
+            </if>
+            <if test="req.actionNumber != null and req.actionNumber != ''">
+                AND action_no LIKE CONCAT('%', #{req.actionNumber}, '%')
+            </if>
+            <if test="req.valueDateStart != null">
+                AND value_date >= #{req.valueDateStart}
+            </if>
+            <if test="req.valueDateEnd != null">
+                AND value_date &lt;= #{req.valueDateEnd}
+            </if>
+            <if test="req.currency != null and req.currency != ''">
+                AND currency = #{req.currency}
+            </if>
+            <if test="req.amountMin != null">
+                AND settlement_amount >= #{req.amountMin}
+            </if>
+            <if test="req.amountMax != null">
+                AND settlement_amount &lt;= #{req.amountMax}
+            </if>
+            <if test="req.isin != null and req.isin != ''">
+                AND isin = #{req.isin}
+            </if>
+            <if test="req.paymentStatus != null and req.paymentStatus != ''">
+                AND payment_status = #{req.paymentStatus}
+            </if>
+            <if test="req.journalStatus != null and req.journalStatus != ''">
+                AND journal_status = #{req.journalStatus}
+            </if>
+            <if test="req.journalSequence != null and req.journalSequence != ''">
+                AND journal_sequence LIKE CONCAT('%', #{req.journalSequence}, '%')
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+</mapper> 

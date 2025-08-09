@@ -1,0 +1,23 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.SegmentOptionMapper">
+    <!-- 根据查询帐套下的段值信息，并限制返回的条目数(明细数据) -->
+    <select id="querySegmentList" parameterType="com.paob.tms.dto.req.SegmentValueReq" resultType="com.paob.tms.dto.resp.SelectOptionResp" fetchSize="10000">
+        WITH segment_id AS (
+            SELECT CAST(NULLIF(R.SEGMENT_ID, '') AS INTEGER) AS SEGMENT_ID
+            FROM tms_books_segment_relation R
+            WHERE R.BOOK_NO = #{bookNo} AND R.SEGMENT = #{segmentName}
+        )
+        SELECT
+            E.FLEX_VALUE || '_' || E.DESCRIPTION AS CODEORNAME,
+            e.flex_value AS key,
+            e.description AS value,
+            E.SEGMENTS_IS_RELEVANCY_FLAG as attribute1,
+            E.BUSINESS_TYPE AS attribute2
+        FROM tms_segment_value E
+        WHERE E.FLEX_VALUE_SET_ID = (SELECT SEGMENT_ID FROM segment_id)
+        <if test="codeOrName != null and codeOrName != ''">
+            AND E.FLEX_VALUE || '_' || E.DESCRIPTION LIKE '%' || #{codeOrName} || '%'
+        </if>
+        ORDER BY E.FLEX_VALUE
+    </select>
+</mapper>

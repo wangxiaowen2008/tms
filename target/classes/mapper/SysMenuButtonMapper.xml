@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.SysMenuButtonMapper">
+    <select id="selectButtonsByMenuId" resultType="com.paob.tms.dto.resp.MenuButtonResp">
+        SELECT 
+            id,
+            menu_id,
+            button_name,
+            button_code,
+            button_status,
+            updated_by,
+            updated_time
+        FROM sys_menu_button
+        WHERE menu_id = #{menuId}
+        AND button_status = 1
+        AND deleted = 0
+    </select>
+</mapper> 

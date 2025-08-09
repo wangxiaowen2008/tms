@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.BankAccountBalanceMapper">
+
+    <!-- 分页查询银行账号余额对账列表 -->
+    <select id="selectBankAccountBalancePage" resultType="com.paob.tms.dto.resp.BankAccountBalanceResp">
+        SELECT 
+            pa.id,
+            #{query.date} as date,
+            pa.bank_name as bankName,
+            pa.account_name as accountName,
+            pa.account_number as accountNumber,
+            pa.currency,
+            COALESCE(as.balance, 0) as accountBalance,
+            sb.acc_code1 as subject,
+            sb.acc_code2 as subSubject,
+            COALESCE(sb.end_balance, 0) as endBalance,
+            COALESCE(as.balance, 0) - COALESCE(sb.end_balance, 0) as differenceAmount
+        FROM tms_payment_account pa
+        LEFT JOIN tms_account_stream as ON as.account_number = pa.account_number 
+            AND as.currency = pa.currency
+            AND as.date = #{query.date}
+        LEFT JOIN tms_subject_balance sb ON sb.segment1 = '800000'
+            AND sb.acc_code1 = pa.subject_code
+            AND sb.acc_code2 = pa.sub_subject_code
+            AND sb.set_of_books_id = 'HK_SOB'
+            AND sb.period_name = (
+                SELECT MAX(period_name) 
+                FROM tms_subject_balance 
+                WHERE segment1 = '800000'
+                AND acc_code1 = pa.subject_code
+                AND acc_code2 = pa.sub_subject_code
+                AND set_of_books_id = 'HK_SOB'
+            )
+        <where>
+            <if test="query.bankName != null and query.bankName != ''">
+                AND pa.bank_name LIKE CONCAT('%', #{query.bankName}, '%')
+            </if>
+            <if test="query.accountNumber != null and query.accountNumber != ''">
+                AND pa.account_number = #{query.accountNumber}
+            </if>
+            <if test="query.currency != null and query.currency != ''">
+                AND pa.currency = #{query.currency}
+            </if>
+            <if test="query.amount != null">
+                AND as.balance = #{query.amount}
+            </if>
+            <if test="query.hasDifference != null and query.hasDifference != ''">
+                <choose>
+                    <when test="query.hasDifference == 'YES'">
+                        AND COALESCE(as.balance, 0) != COALESCE(sb.end_balance, 0)
+                    </when>
+                    <when test="query.hasDifference == 'NO'">
+                        AND COALESCE(as.balance, 0) = COALESCE(sb.end_balance, 0)
+                    </when>
+                </choose>
+            </if>
+        </where>
+        ORDER BY pa.date DESC, pa.bank_name ASC
+    </select>
+
+</mapper> 

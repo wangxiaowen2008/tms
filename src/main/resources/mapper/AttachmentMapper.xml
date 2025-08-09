@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.AttachmentMapper">
+    
+    <!-- 基础结果映射 -->
+    <resultMap id="BaseResultMap" type="com.paob.tms.model.Attachment">
+        <id column="id" property="id"/>
+        <result column="document_name" property="documentName"/>
+        <result column="file_path" property="filePath"/>
+        <result column="upload_by" property="uploadBy"/>
+        <result column="upload_time" property="uploadTime"/>
+        <result column="attachment_type" property="attachmentType"/>
+        <result column="business_key" property="businessKey"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_by" property="updatedBy"/>
+        <result column="updated_time" property="updatedTime"/>
+    </resultMap>
+    
+    <!-- 基础列名 -->
+    <sql id="Base_Column_List">
+        id, document_name, file_path, upload_by, upload_time, attachment_type, 
+        business_key, is_deleted, created_by, created_time, updated_by, updated_time
+    </sql>
+    
+    <!-- 分页查询 -->
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tms_attachment
+        <where>
+            <if test="attachmentType != null and attachmentType != ''">
+                AND attachment_type = #{attachmentType}
+            </if>
+            <if test="businessKey != null and businessKey != ''">
+                AND business_key = #{businessKey}
+            </if>
+            <if test="uploadBy != null and uploadBy != ''">
+                AND upload_by = #{uploadBy}
+            </if>
+            <if test="createTimeStart != null">
+                AND created_time >= #{createTimeStart}
+            </if>
+            <if test="createTimeEnd != null">
+                AND created_time &lt;= #{createTimeEnd}
+            </if>
+            AND is_deleted = 0
+        </where>
+        ORDER BY created_time DESC
+    </select>
+</mapper> 

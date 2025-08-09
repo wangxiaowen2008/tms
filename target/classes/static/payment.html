@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付中心 - TMS系统</title>
+    <link rel="stylesheet" href="payment.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 支付流程步骤指示器 -->
+        <div class="payment-steps">
+            <div class="step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-label">订单确认</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">选择支付方式</div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">支付验证</div>
+            </div>
+            <div class="step" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-label">支付完成</div>
+            </div>
+        </div>
+
+        <!-- 步骤1：订单确认 -->
+        <div class="step-content active" id="step1">
+            <div class="card">
+                <h2><i class="fas fa-shopping-cart"></i> 订单确认</h2>
+                <div class="order-summary">
+                    <div class="order-item">
+                        <div class="item-info">
+                            <h3>订单号：<span id="orderNumber">TMS20241201001</span></h3>
+                            <p>创建时间：<span id="orderTime">2024-12-01 10:30:00</span></p>
+                        </div>
+                    </div>
+                    <div class="order-details">
+                        <div class="detail-row">
+                            <span>商品名称：</span>
+                            <span id="productName">运输管理系统服务</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>服务周期：</span>
+                            <span id="servicePeriod">1个月</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>单价：</span>
+                            <span id="unitPrice">¥1,000.00</span>
+                        </div>
+                        <div class="detail-row total">
+                            <span>应付金额：</span>
+                            <span id="totalAmount">¥1,000.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="goBack()">返回</button>
+                    <button class="btn btn-primary" onclick="nextStep()">确认订单</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤2：选择支付方式 -->
+        <div class="step-content" id="step2">
+            <div class="card">
+                <h2><i class="fas fa-credit-card"></i> 选择支付方式</h2>
+                <div class="payment-methods">
+                    <div class="payment-method" data-method="alipay">
+                        <div class="method-icon">
+                            <i class="fab fa-alipay"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>支付宝</h3>
+                            <p>推荐使用，安全快捷</p>
+                        </div>
+                        <div class="method-radio">
+                            <input type="radio" name="paymentMethod" value="alipay" checked>
+                        </div>
+                    </div>
+                    <div class="payment-method" data-method="wechat">
+                        <div class="method-icon">
+                            <i class="fab fa-weixin"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>微信支付</h3>
+                            <p>扫码支付，方便快捷</p>
+                        </div>
+                        <div class="method-radio">
+                            <input type="radio" name="paymentMethod" value="wechat">
+                        </div>
+                    </div>
+                    <div class="payment-method" data-method="bank">
+                        <div class="method-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>银行转账</h3>
+                            <p>对公转账，安全可靠</p>
+                        </div>
+                        <div class="method-radio">
+                            <input type="radio" name="paymentMethod" value="bank">
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">上一步</button>
+                    <button class="btn btn-primary" onclick="nextStep()">确认支付方式</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤3：支付验证 -->
+        <div class="step-content" id="step3">
+            <div class="card">
+                <h2><i class="fas fa-shield-alt"></i> 支付验证</h2>
+                <div class="payment-verification">
+                    <div class="qr-code-container" id="qrCodeContainer">
+                        <div class="qr-code">
+                            <i class="fas fa-qrcode"></i>
+                            <p>请使用手机扫描二维码完成支付</p>
+                        </div>
+                        <div class="payment-info">
+                            <p>支付金额：<strong id="payAmount">¥1,000.00</strong></p>
+                            <p>支付方式：<strong id="payMethod">支付宝</strong></p>
+                        </div>
+                    </div>
+                    <div class="payment-status">
+                        <div class="status-indicator">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>等待支付中...</span>
+                        </div>
+                        <div class="countdown">
+                            <span>支付倒计时：</span>
+                            <span id="countdown">05:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">上一步</button>
+                    <button class="btn btn-primary" onclick="checkPaymentStatus()">检查支付状态</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤4：支付完成 -->
+        <div class="step-content" id="step4">
+            <div class="card">
+                <div class="success-animation">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>支付成功！</h2>
+                    <p>您的订单已支付完成，感谢您的购买！</p>
+                </div>
+                <div class="payment-result">
+                    <div class="result-item">
+                        <span>订单号：</span>
+                        <span id="resultOrderNumber">TMS20241201001</span>
+                    </div>
+                    <div class="result-item">
+                        <span>支付金额：</span>
+                        <span id="resultAmount">¥1,000.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>支付时间：</span>
+                        <span id="resultTime">2024-12-01 10:35:00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>支付方式：</span>
+                        <span id="resultMethod">支付宝</span>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="goToHome()">返回首页</button>
+                    <button class="btn btn-secondary" onclick="downloadReceipt()">下载收据</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载遮罩 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>处理中...</p>
+        </div>
+    </div>
+
+    <!-- 提示框 -->
+    <div class="toast" id="toast"></div>
+
+    <script src="payment.js"></script>
+</body>
+</html> 

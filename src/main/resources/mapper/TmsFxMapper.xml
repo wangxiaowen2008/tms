@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.TmsFxMapper">
+
+    <select id="selectFxList" resultType="com.paob.tms.model.TmsFx">
+        SELECT *
+        FROM tms_fx
+        <where>
+            <if test="req.tradeNumber != null and req.tradeNumber != ''">
+                AND trade_number LIKE CONCAT('%', #{req.tradeNumber}, '%')
+            </if>
+            <if test="req.currency != null and req.currency != ''">
+                AND (ccy1 = #{req.currency} OR ccy2 = #{req.currency})
+            </if>
+            <if test="req.amountMin != null">
+                AND (ccy1_amount >= #{req.amountMin} OR ccy2_amount >= #{req.amountMin})
+            </if>
+            <if test="req.amountMax != null">
+                AND (ccy1_amount &lt;= #{req.amountMax} OR ccy2_amount &lt;= #{req.amountMax})
+            </if>
+            <if test="req.valueDateStart != null">
+                AND value_date >= #{req.valueDateStart}
+            </if>
+            <if test="req.valueDateEnd != null">
+                AND value_date &lt;= #{req.valueDateEnd}
+            </if>
+            <if test="req.paymentStatus != null and req.paymentStatus != ''">
+                AND payment_status = #{req.paymentStatus}
+            </if>
+        </where>
+        ORDER BY sort_id DESC
+    </select>
+
+</mapper> 

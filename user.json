@@ -1,0 +1,8 @@
+{
+  "umCode": "test07",
+  "userName": "交易员07",
+  "email": "trader07@example.com",
+  "department": "交易部",
+  "userStatus": 1,
+  "roleIds": [9]
+} 

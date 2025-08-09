@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.AccrualMapper">
+    
+    <select id="selectPage" resultType="com.paob.tms.model.Accrual">
+        SELECT *
+        FROM tms_accrual
+        <where>
+            <if test="req.remark != null and req.remark != ''">
+                AND remark = #{req.remark}
+            </if>
+            <if test="req.tradeNumber != null and req.tradeNumber != ''">
+                AND trade_number LIKE CONCAT('%', #{req.tradeNumber}, '%')
+            </if>
+            <if test="req.dateStart != null">
+                AND accrual_date >= #{req.dateStart}
+            </if>
+            <if test="req.dateEnd != null">
+                AND accrual_date &lt;= #{req.dateEnd}
+            </if>
+            <if test="req.currency != null and req.currency != ''">
+                AND currency = #{req.currency}
+            </if>
+            <if test="req.marketValueMin != null">
+                AND market_value >= #{req.marketValueMin}
+            </if>
+            <if test="req.marketValueMax != null">
+                AND market_value &lt;= #{req.marketValueMax}
+            </if>
+            <if test="req.isin != null and req.isin != ''">
+                AND isin = #{req.isin}
+            </if>
+            <if test="req.interestJournalStatus != null and req.interestJournalStatus != ''">
+                AND interest_journal_status = #{req.interestJournalStatus}
+            </if>
+            <if test="req.valuationJournalStatus != null and req.valuationJournalStatus != ''">
+                AND valuation_journal_status = #{req.valuationJournalStatus}
+            </if>
+            <if test="req.allocPremDiscJournalStatus != null and req.allocPremDiscJournalStatus != ''">
+                AND alloc_prem_disc_journal_status = #{req.allocPremDiscJournalStatus}
+            </if>
+            <if test="req.journalSequence != null and req.journalSequence != ''">
+                AND (
+                    interest_journal_no LIKE CONCAT('%', #{req.journalSequence}, '%')
+                    OR valuation_journal_no LIKE CONCAT('%', #{req.journalSequence}, '%')
+                    OR alloc_prem_disc_journal_no LIKE CONCAT('%', #{req.journalSequence}, '%')
+                )
+            </if>
+        </where>
+        ORDER BY accrual_date DESC, created_time DESC
+    </select>
+    
+    <select id="selectTradeBlotters" resultType="com.paob.tms.model.TradeBlotter">
+        SELECT *
+        FROM tms_trade_blotter
+        ${ew.customSqlSegment}
+        order by item asc
+    </select>
+    
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO tms_accrual (
+            accrual_date,
+            remark,
+            trade_number,
+            entity_id,
+            counterpart,
+            currency,
+            price,
+            sum_of_hkd_amount,
+            sum_of_notional_in_base_currency,
+            debt_security_name,
+            isin,
+            interest_journal_status,
+            alloc_prem_disc_journal_status,
+            valuation_journal_status,
+            created_time,
+            updated_time,
+            created_by,
+            updated_by
+        )
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+        (
+            #{item.accrualDate},
+            #{item.remark},
+            #{item.tradeNumber},
+            #{item.entityId},
+            #{item.counterpart},
+            #{item.currency},
+            #{item.price},
+            #{item.sumOfHkdAmount},
+            #{item.sumOfNotionalInBaseCurrency},
+            #{item.debtSecurityName},
+            #{item.isin},
+            #{item.interestJournalStatus},
+            #{item.allocPremDiscJournalStatus},
+            #{item.valuationJournalStatus},
+            #{item.createdTime},
+            #{item.updatedTime},
+            #{item.createdBy},
+            #{item.updatedBy}
+        )
+        </foreach>
+    </insert>
+    
+    <select id="selectByUniqueKey" resultType="com.paob.tms.model.Accrual">
+        SELECT *
+        FROM tms_accrual
+        WHERE remark = #{remark}
+        AND currency = #{currency}
+        AND isin = #{isin}
+        AND accrual_date = #{accrualDate}
+    </select>
+    
+    <select id="selectMarketValue" resultType="java.math.BigDecimal">
+        SELECT COALESCE(SUM(market_value), 0)
+        FROM tms_risk_monitoring
+        WHERE remark = #{remark}
+        and isin = #{isin}
+        AND currency = #{currency}
+        AND reporting_date = #{date}
+    </select>
+    
+    <select id="selectPreviousAccruedValuationChange" resultType="java.math.BigDecimal">
+        SELECT COALESCE(accrued_valuation_change, 0)
+        FROM tms_accrual
+        WHERE remark = #{remark}
+        AND currency = #{currency}
+        AND isin = #{isin}
+        AND accrual_date = #{accrualDate}::date - 1
+    </select>
+    
+    <select id="selectPreviousAccruedInterest" resultType="java.math.BigDecimal">
+        SELECT COALESCE(accrued_interest, 0)
+        FROM tms_accrual
+        WHERE remark = #{remark}
+        AND currency = #{currency}
+        AND isin = #{isin}
+        AND accrual_date = #{accrualDate}::date - 1
+    </select>
+    
+    <select id="selectPreviousAllocPremDisc" resultType="java.math.BigDecimal">
+        SELECT COALESCE(alloc_prem_disc, 0)
+        FROM tms_accrual
+        WHERE remark = #{remark}
+        AND currency = #{currency}
+        AND isin = #{isin}
+        AND accrual_date = #{accrualDate}::date - 1
+    </select>
+</mapper> 

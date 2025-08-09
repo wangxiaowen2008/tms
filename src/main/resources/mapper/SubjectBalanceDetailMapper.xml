@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.SubjectBalanceDetailMapper">
+
+    <!-- 分页查询科目余额详情 -->
+    <select id="selectSubjectBalanceDetailPage" resultType="com.paob.tms.dto.resp.SubjectBalanceDetailResp">
+        SELECT 
+            sb.code_combination_id as codeCombinationId,
+            sb.set_of_books_id as setOfBooksId,
+            sb.books_name as booksName,
+            sb.period_name as periodName,
+            sb.currency_code as currencyCode,
+            sb.actual_flag as actualFlag,
+            sb.segment1,
+            sb.segment1_description as segment1Description,
+            sb.segment2,
+            sb.segment2_description as segment2Description,
+            sb.segment3,
+            sb.segment3_description as segment3Description,
+            sb.segment4,
+            sb.segment4_description as segment4Description,
+            sb.acc_code1,
+            sb.acc_code1_name as accCode1Name,
+            sb.acc_code2,
+            sb.acc_code2_name as accCode2Name,
+            sb.acc_code3,
+            sb.acc_code3_name as accCode3Name,
+            sb.segment6,
+            sb.segment6_description as segment6Description,
+            sb.segment7,
+            sb.segment7_description as segment7Description,
+            sb.segment8,
+            sb.segment8_description as segment8Description,
+            sb.begin_balance_dr as beginBalanceDr,
+            sb.begin_balance_cr as beginBalanceCr,
+            sb.period_net_dr as periodNetDr,
+            sb.period_net_cr as periodNetCr,
+            sb.end_balance_dr as endBalanceDr,
+            sb.end_balance_cr as endBalanceCr,
+            sb.end_balance as endBalance,
+            sb.create_time as createdTime,
+            sb.update_time as updatedTime,
+            (
+                SELECT JSON_ARRAYAGG(
+                    JSON_OBJECT(
+                        'journalSequence', j.journal_sequence,
+                        'effectiveDate', j.effective_date,
+                        'journalLineDescription', j.journal_line_description,
+                        'enteredDr', j.entered_dr,
+                        'enteredCr', j.entered_cr,
+                        'accountedDr', j.accounted_dr,
+                        'accountedCr', j.accounted_cr,
+                        'pEnteredDr', j.p_entered_dr,
+                        'pEnteredCr', j.p_entered_cr,
+                        'createdBy', j.created_by,
+                        'createdDate', j.created_date,
+                        'checkBy', j.check_by,
+                        'checkDate', j.check_date
+                    )
+                )
+                FROM tms_journal j
+                WHERE j.code_combination_id = sb.code_combination_id
+                AND j.period_name = sb.period_name
+                AND j.set_of_books_id = sb.set_of_books_id
+            ) as journalList
+        FROM tms_subject_balance sb
+        <where>
+            <if test="query.setOfBooksId != null and query.setOfBooksId != ''">
+                AND sb.set_of_books_id = #{query.setOfBooksId}
+            </if>
+            <if test="query.periodName != null and query.periodName != ''">
+                AND sb.period_name = #{query.periodName}
+            </if>
+            <if test="query.segment1 != null and query.segment1 != ''">
+                AND sb.segment1 = #{query.segment1}
+            </if>
+            <if test="query.segment2 != null and query.segment2 != ''">
+                AND sb.segment2 = #{query.segment2}
+            </if>
+            <if test="query.segment3 != null and query.segment3 != ''">
+                AND sb.segment3 = #{query.segment3}
+            </if>
+            <if test="query.segment4 != null and query.segment4 != ''">
+                AND sb.segment4 = #{query.segment4}
+            </if>
+            <if test="query.segment5 != null and query.segment5 != ''">
+                AND sb.acc_code1 = #{query.segment5}
+            </if>
+            <if test="query.segment6 != null and query.segment6 != ''">
+                AND sb.segment6 = #{query.segment6}
+            </if>
+            <if test="query.segment7 != null and query.segment7 != ''">
+                AND sb.segment7 = #{query.segment7}
+            </if>
+            <if test="query.segment8 != null and query.segment8 != ''">
+                AND sb.segment8 = #{query.segment8}
+            </if>
+            <if test="query.curNo != null and query.curNo != ''">
+                AND sb.currency_code = #{query.curNo}
+            </if>
+        </where>
+        ORDER BY sb.period_name DESC, sb.segment1, sb.acc_code1, sb.acc_code2, sb.acc_code3
+    </select>
+
+</mapper> 

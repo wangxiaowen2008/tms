@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.SysUserMapper">
+    <select id="selectUserList" resultType="com.paob.tms.dto.resp.UserResp">
+        SELECT 
+            u.id,
+            u.um_code,
+            u.user_name,
+            u.email,
+            u.department,
+            u.user_status,
+            u.updated_by,
+            u.updated_time
+        FROM sys_user u
+        <where>
+            <if test="req.umCode != null and req.umCode != ''">
+                AND u.um_code LIKE CONCAT('%', #{req.umCode}, '%')
+            </if>
+            <if test="req.userStatus != null">
+                AND u.user_status = #{req.userStatus}
+            </if>
+        </where>
+        ORDER BY u.id DESC
+    </select>
+</mapper> 

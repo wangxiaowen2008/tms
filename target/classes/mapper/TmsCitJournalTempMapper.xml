@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.TmsCitJournalTempMapper">
+    
+    <!-- 查询凭证模板列表 -->
+    <select id="selectTemplateList" resultType="com.paob.tms.model.TmsCitJournalTemp">
+        SELECT distinct temp_no,temp_type,remark, temp_name,books_no,segment1, data_state, updated_by, updated_time
+        FROM tms_cit_journal_temp
+        <where>
+            <if test="remark != null">
+                AND remark = #{remark}
+            </if>
+            <if test="templateType != null">
+                AND temp_type = #{templateType}
+            </if>
+            <if test="flowType != null">
+                AND stream_type = #{flowType}
+            </if>
+            <if test="templateName != null">
+                AND temp_name LIKE CONCAT('%', #{templateName}, '%')
+            </if>
+        </where>
+        ORDER BY updated_time DESC
+    </select>
+
+    <!-- 查询凭证模板总数 -->
+    <select id="selectTemplateCount" resultType="java.lang.Long">
+        SELECT COUNT(*)
+        FROM tms_cit_journal_temp
+        <where>
+            <if test="remark != null">
+                AND remark = #{remark}
+            </if>
+            <if test="templateType != null">
+                AND temp_type = #{templateType}
+            </if>
+            <if test="flowType != null">
+                AND stream_type = #{flowType}
+            </if>
+            <if test="templateName != null">
+                AND temp_name LIKE CONCAT('%', #{templateName}, '%')
+            </if>
+        </where>
+    </select>
+
+    
+    <!-- 查询复核通过状态的模板名称列表 -->
+    <select id="selectApprovedTemplateNames" resultType="java.lang.String">
+        SELECT DISTINCT temp_name
+        FROM tms_cit_journal_temp
+        WHERE data_state = '2'
+        ORDER BY updated_time DESC
+    </select>
+    
+</mapper> 

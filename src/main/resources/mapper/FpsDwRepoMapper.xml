@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.FpsDwRepoMapper">
+    
+    <!-- 基础结果映射 -->
+    <resultMap id="BaseResultMap" type="com.paob.tms.model.FpsDwRepo">
+        <id column="trade_number" jdbcType="VARCHAR" property="tradeNumber"/>
+        <result column="counterpart" property="counterpart"/>
+        <result column="type_of_facility" property="typeOfFacility"/>
+        <result column="repo_rate" property="repoRate"/>
+        <result column="currency" property="currency"/>
+        <result column="amount" property="amount"/>
+        <result column="trade_date" property="tradeDate"/>
+        <result column="value_date" property="valueDate"/>
+        <result column="repurchase_date" property="repurchaseDate"/>
+        <result column="collateral" property="collateral"/>
+        <result column="interest" property="interest"/>
+        <result column="channel" property="channel"/>
+        <result column="trade_time" property="tradeTime"/>
+        <result column="sort_id" property="sortId"/>
+        <result column="payment_status" property="paymentStatus"/>
+        <result column="journal_status" property="journalStatus"/>
+        <result column="journal_sequence" property="journalSequence"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_by" property="updatedBy"/>
+        <result column="updated_time" property="updatedTime"/>
+    </resultMap>
+
+    <!-- 基础列名 -->
+    <sql id="Base_Column_List">
+        trade_number, counterpart, type_of_facility, repo_rate, currency, amount,
+        trade_date, value_date, repurchase_date, collateral, interest, channel,
+        trade_time, sort_id, payment_status, journal_status, journal_sequence,
+        created_by, created_time, updated_by, updated_time
+    </sql>
+
+    <!-- 根据条件查询REPO交易 -->
+    <select id="selectByCondition" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tms_fps_dw_repo
+        <where>
+            <if test="condition.tradeNumber != null and condition.tradeNumber != ''">
+                AND trade_number LIKE CONCAT('%', #{condition.tradeNumber}, '%')
+            </if>
+            <if test="condition.currency != null and condition.currency != ''">
+                AND currency = #{condition.currency}
+            </if>
+            <if test="condition.amountMin != null">
+                AND amount &gt;= #{condition.amountMin}
+            </if>
+            <if test="condition.amountMax != null">
+                AND amount &lt;= #{condition.amountMax}
+            </if>
+            <if test="condition.tradeDateStart != null">
+                AND trade_date &gt;= #{condition.tradeDateStart}
+            </if>
+            <if test="condition.tradeDateEnd != null">
+                AND trade_date &lt;= #{condition.tradeDateEnd}
+            </if>
+            <if test="condition.valueDateStart != null">
+                AND value_date &gt;= #{condition.valueDateStart}
+            </if>
+            <if test="condition.valueDateEnd != null">
+                AND value_date &lt;= #{condition.valueDateEnd}
+            </if>
+            <if test="condition.repurchaseDateStart != null">
+                AND repurchase_date &gt;= #{condition.repurchaseDateStart}
+            </if>
+            <if test="condition.repurchaseDateEnd != null">
+                AND repurchase_date &lt;= #{condition.repurchaseDateEnd}
+            </if>
+            <if test="condition.paymentStatus != null and condition.paymentStatus != ''">
+                AND payment_status = #{condition.paymentStatus}
+            </if>
+            <if test="condition.journalStatus != null and condition.journalStatus != ''">
+                AND journal_status = #{condition.journalStatus}
+            </if>
+            <if test="condition.journalSequence != null and condition.journalSequence != ''">
+                AND journal_sequence LIKE CONCAT('%', #{condition.journalSequence}, '%')
+            </if>
+        </where>
+        ORDER BY sort_id DESC
+    </select>
+
+    <!-- 根据交易编号查询REPO交易 -->
+    <select id="selectByTradeNumber" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tms_fps_dw_repo
+        WHERE trade_number = #{tradeNumber}
+    </select>
+
+    <!-- 批量更新制证状态 -->
+    <update id="batchUpdateJournalStatus">
+        UPDATE tms_fps_dw_repo
+        SET journal_status = #{journalStatus},
+            updated_by = #{updatedBy},
+            updated_time = NOW()
+        WHERE trade_number IN
+        <foreach collection="tradeNumbers" item="tradeNumber" open="(" separator="," close=")">
+            #{tradeNumber}
+        </foreach>
+    </update>
+</mapper> 

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.TradeBlotterMapper">
+    
+    <!-- 基础结果映射 -->
+    <resultMap id="BaseResultMap" type="com.paob.tms.model.TradeBlotter">
+        <id column="trade_number" jdbcType="VARCHAR" property="tradeNumber"/>
+        <result column="item" property="item"/>
+        <result column="entity_id" property="entityId"/>
+        <result column="counterpart" property="counterpart"/>
+        <result column="buy_sell_borrow_lend" property="buySellBorrowLend"/>
+        <result column="yield" property="yield"/>
+        <result column="currency" property="currency"/>
+        <result column="settlement_amount" property="settlementAmount"/>
+        <result column="trade_date" property="tradeDate"/>
+        <result column="value_date" property="valueDate"/>
+        <result column="maturity_date" property="maturityDate"/>
+        <result column="remark" property="remark"/>
+        <result column="day_count" property="dayCount"/>
+        <result column="interest" property="interest"/>
+        <result column="price" property="price"/>
+        <result column="debt_security_name" property="debtSecurityName"/>
+        <result column="isin" property="isin"/>
+        <result column="face_amount" property="faceAmount"/>
+        <result column="amount_received_at_maturity" property="amountReceivedAtMaturity"/>
+        <result column="interest_paid_upfront" property="interestPaidUpfront"/>
+        <result column="net_interest" property="netInterest"/>
+        <result column="coupon_type" property="couponType"/>
+        <result column="coupon_frequent" property="couponFrequent"/>
+        <result column="channel" property="channel"/>
+        <result column="settlement_account" property="settlementAccount"/>
+        <result column="broker" property="broker"/>
+        <result column="trade_time" property="tradeTime"/>
+        <result column="interest_accrual_date" property="interestAccrualDate"/>
+        <result column="full_name" property="fullName"/>
+        <result column="full_name_2" property="fullName2"/>
+        <result column="branch" property="branch"/>
+        <result column="branch2" property="branch2"/>
+        <result column="name" property="name"/>
+        <result column="series" property="series"/>
+        <result column="match" property="match"/>
+        <result column="maturity" property="maturity"/>
+        <result column="group_parent" property="groupParent"/>
+        <result column="hkd_amount" property="hkdAmount"/>
+        <result column="usd_amount" property="usdAmount"/>
+        <result column="trade_date_vs_value_date" property="tradeDateVsValueDate"/>
+        <result column="english_name" property="englishName"/>
+        <result column="ring_fenced" property="ringFenced"/>
+        <result column="days_to_last_month_end" property="daysToLastMonthEnd"/>
+        <result column="days_to_maturity" property="daysToMaturity"/>
+        <result column="tenor_bucket" property="tenorBucket"/>
+        <result column="ir_tenor_bucket" property="irTenorBucket"/>
+        <result column="holdings_period" property="holdingsPeriod"/>
+        <result column="rank" property="rank"/>
+        <result column="interest_in_hkd" property="interestInHkd"/>
+        <result column="notional_in_base_currency" property="notionalInBaseCurrency"/>
+        <result column="type" property="type"/>
+        <result column="boc" property="boc"/>
+        <result column="scb" property="scb"/>
+        <result column="hsbc" property="hsbc"/>
+        <result column="ccba" property="ccba"/>
+        <result column="des" property="des"/>
+        <result column="max_diff" property="maxDiff"/>
+        <result column="auction_ave" property="auctionAve"/>
+        <result column="auction_high" property="auctionHigh"/>
+        <result column="t_day" property="tDay"/>
+        <result column="trade_no_old" property="tradeNoOld"/>
+        <result column="day_count_2" property="dayCount2"/>
+        <result column="country_of_domicile_hd" property="countryOfDomicileHd"/>
+        <result column="country_of_domicile" property="countryOfDomicile"/>
+        <result column="bbg_issued_amount_hd" property="bbgIssuedAmountHd"/>
+        <result column="bbg_issued_amount" property="bbgIssuedAmount"/>
+        <result column="bbg_private_placement_hd" property="bbgPrivatePlacementHd"/>
+        <result column="bbg_private_placement" property="bbgPrivatePlacement"/>
+        <result column="next_coupon_date_hc" property="nextCouponDateHc"/>
+        <result column="next_coupon_date" property="nextCouponDate"/>
+        <result column="issuer_rating" property="issuerRating"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="issuer_country" property="issuerCountry"/>
+        <result column="country_of_incorporation" property="countryOfIncorporation"/>
+        <result column="report_date" property="reportDate"/>
+        <result column="risk_report_date" property="riskReportDate"/>
+        <result column="face_amount_in_hkd" property="faceAmountInHkd"/>
+        <result column="face_amount_in_usd" property="faceAmountInUsd"/>
+        <result column="country_rating" property="countryRating"/>
+        <result column="instrument" property="instrument"/>
+        <result column="asset_type_rank" property="assetTypeRank"/>
+        <result column="booking" property="booking"/>
+        <result column="month_end_booking_check" property="monthEndBookingCheck"/>
+        <result column="next_interest" property="nextInterest"/>
+        <result column="payment_status" property="paymentStatus"/>
+        <result column="journal_status" property="journalStatus"/>
+        <result column="journal_sequence" property="journalSequence"/>
+        <result column="order_id" property="orderId"/>
+        <result column="stream_No" property="streamNo"/>
+        <result column="exist_Company" property="existCompany"/>
+        <result column="exist_accrual" property="existAccrual"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_by" property="updatedBy"/>
+        <result column="updated_time" property="updatedTime"/>
+    </resultMap>
+
+    <!-- 基础列名 -->
+    <sql id="Base_Column_List">
+        trade_number, item, entity_id, counterpart, buy_sell_borrow_lend, yield, currency,
+        settlement_amount, trade_date, value_date, maturity_date, remark, day_count, interest,
+        price, debt_security_name, isin, face_amount, amount_received_at_maturity,
+        interest_paid_upfront, net_interest, coupon_type, coupon_frequent, channel,
+        settlement_account, broker, trade_time, interest_accrual_date, full_name, full_name_2,
+        branch, branch2, name, series, match, maturity, group_parent, hkd_amount, usd_amount,
+        trade_date_vs_value_date, english_name, ring_fenced, days_to_last_month_end,
+        days_to_maturity, tenor_bucket, ir_tenor_bucket, holdings_period, rank,
+        interest_in_hkd, notional_in_base_currency, type, boc, scb, hsbc, ccba, des,
+        max_diff, auction_ave, auction_high, t_day, trade_no_old, day_count_2,
+        country_of_domicile_hd, country_of_domicile, bbg_issued_amount_hd,
+        bbg_issued_amount, bbg_private_placement_hd, bbg_private_placement,
+        next_coupon_date_hc, next_coupon_date, issuer_rating, parent_id, issuer_country,
+        country_of_incorporation, report_date, risk_report_date, face_amount_in_hkd,
+        face_amount_in_usd, country_rating, instrument, asset_type_rank, booking,
+        month_end_booking_check, next_interest, payment_status, journal_status,
+        journal_sequence, order_id, stream_No, exist_Company, exist_accrual,
+        created_by, created_time, updated_by, updated_time
+    </sql>
+
+    <!-- 根据条件查询交易流水 -->
+    <select id="selectByCondition" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tms_trade_blotter
+        <where>
+            <if test="condition.remark != null and condition.remark != ''">
+                AND remark = #{condition.remark}
+            </if>
+            <if test="condition.buySellBorrowLend != null and condition.buySellBorrowLend != ''">
+                AND buy_sell_borrow_lend = #{condition.buySellBorrowLend}
+            </if>
+            <if test="condition.tradeNumber != null and condition.tradeNumber != ''">
+                AND trade_number LIKE CONCAT('%', #{condition.tradeNumber}, '%')
+            </if>
+            <if test="condition.tradeDateStart != null">
+                AND trade_date &gt;= #{condition.tradeDateStart}
+            </if>
+            <if test="condition.tradeDateEnd != null">
+                AND trade_date &lt;= #{condition.tradeDateEnd}
+            </if>
+            <if test="condition.valueDateStart != null">
+                AND value_date &gt;= #{condition.valueDateStart}
+            </if>
+            <if test="condition.valueDateEnd != null">
+                AND value_date &lt;= #{condition.valueDateEnd}
+            </if>
+            <if test="condition.maturityDateStart != null">
+                AND maturity_date &gt;= #{condition.maturityDateStart}
+            </if>
+            <if test="condition.maturityDateEnd != null">
+                AND maturity_date &lt;= #{condition.maturityDateEnd}
+            </if>
+            <if test="condition.currency != null and condition.currency != ''">
+                AND currency = #{condition.currency}
+            </if>
+            <if test="condition.settlementAmountMin != null">
+                AND settlement_amount &gt;= #{condition.settlementAmountMin}
+            </if>
+            <if test="condition.settlementAmountMax != null">
+                AND settlement_amount &lt;= #{condition.settlementAmountMax}
+            </if>
+            <if test="condition.isin != null and condition.isin != ''">
+                AND isin = #{condition.isin}
+            </if>
+            <if test="condition.paymentStatus != null and condition.paymentStatus != ''">
+                AND payment_status = #{condition.paymentStatus}
+            </if>
+            <if test="condition.journalStatus != null and condition.journalStatus != ''">
+                AND journal_status = #{condition.journalStatus}
+            </if>
+            <if test="condition.journalSequence != null and condition.journalSequence != ''">
+                AND journal_sequence LIKE CONCAT('%', #{condition.journalSequence}, '%')
+            </if>
+        </where>
+        ORDER BY trade_date DESC, trade_number DESC
+    </select>
+
+    <!-- 根据交易编号查询交易流水 -->
+    <select id="selectByTradeNumber" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tms_trade_blotter
+        WHERE trade_number = #{tradeNumber}
+    </select>
+
+    <!-- 插入交易流水 -->
+    <insert id="insert" parameterType="com.paob.tms.model.TradeBlotter">
+        INSERT INTO tms_trade_blotter
+        (<include refid="Base_Column_List"/>)
+        VALUES
+        (#{tradeNumber}, #{item}, #{entityId}, #{counterpart}, #{buySellBorrowLend},
+        #{yield}, #{currency}, #{settlementAmount}, #{tradeDate}, #{valueDate},
+        #{maturityDate}, #{remark}, #{dayCount}, #{interest}, #{price},
+        #{debtSecurityName}, #{isin}, #{faceAmount}, #{amountReceivedAtMaturity},
+        #{interestPaidUpfront}, #{netInterest}, #{couponType}, #{couponFrequent},
+        #{channel}, #{settlementAccount}, #{broker}, #{tradeTime}, #{interestAccrualDate},
+        #{fullName}, #{fullName2}, #{branch}, #{branch2}, #{name}, #{series}, #{match},
+        #{maturity}, #{groupParent}, #{hkdAmount}, #{usdAmount}, #{tradeDateVsValueDate},
+        #{englishName}, #{ringFenced}, #{daysToLastMonthEnd}, #{daysToMaturity},
+        #{tenorBucket}, #{irTenorBucket}, #{holdingsPeriod}, #{rank}, #{interestInHkd},
+        #{notionalInBaseCurrency}, #{type}, #{boc}, #{scb}, #{hsbc}, #{ccba}, #{des},
+        #{maxDiff}, #{auctionAve}, #{auctionHigh}, #{tDay}, #{tradeNoOld}, #{dayCount2},
+        #{countryOfDomicileHd}, #{countryOfDomicile}, #{bbgIssuedAmountHd},
+        #{bbgIssuedAmount}, #{bbgPrivatePlacementHd}, #{bbgPrivatePlacement},
+        #{nextCouponDateHc}, #{nextCouponDate}, #{issuerRating}, #{parentId},
+        #{issuerCountry}, #{countryOfIncorporation}, #{reportDate}, #{riskReportDate},
+        #{faceAmountInHkd}, #{faceAmountInUsd}, #{countryRating}, #{instrument},
+        #{assetTypeRank}, #{booking}, #{monthEndBookingCheck}, #{nextInterest},
+        #{paymentStatus}, #{journalStatus}, #{journalSequence}, #{orderId}, #{streamNo},
+        #{existCompany}, #{existAccrual}, #{createdBy}, #{createdTime}, #{updatedBy},
+        #{updatedTime})
+    </insert>
+
+    <!-- 更新交易流水 -->
+    <update id="update" parameterType="com.paob.tms.model.TradeBlotter">
+        UPDATE tms_trade_blotter
+        SET item = #{item},
+            entity_id = #{entityId},
+            counterpart = #{counterpart},
+            buy_sell_borrow_lend = #{buySellBorrowLend},
+            yield = #{yield},
+            currency = #{currency},
+            settlement_amount = #{settlementAmount},
+            trade_date = #{tradeDate},
+            value_date = #{valueDate},
+            maturity_date = #{maturityDate},
+            remark = #{remark},
+            day_count = #{dayCount},
+            interest = #{interest},
+            price = #{price},
+            debt_security_name = #{debtSecurityName},
+            isin = #{isin},
+            face_amount = #{faceAmount},
+            amount_received_at_maturity = #{amountReceivedAtMaturity},
+            interest_paid_upfront = #{interestPaidUpfront},
+            net_interest = #{netInterest},
+            coupon_type = #{couponType},
+            coupon_frequent = #{couponFrequent},
+            channel = #{channel},
+            settlement_account = #{settlementAccount},
+            broker = #{broker},
+            trade_time = #{tradeTime},
+            interest_accrual_date = #{interestAccrualDate},
+            full_name = #{fullName},
+            full_name_2 = #{fullName2},
+            branch = #{branch},
+            branch2 = #{branch2},
+            name = #{name},
+            series = #{series},
+            match = #{match},
+            maturity = #{maturity},
+            group_parent = #{groupParent},
+            hkd_amount = #{hkdAmount},
+            usd_amount = #{usdAmount},
+            trade_date_vs_value_date = #{tradeDateVsValueDate},
+            english_name = #{englishName},
+            ring_fenced = #{ringFenced},
+            days_to_last_month_end = #{daysToLastMonthEnd},
+            days_to_maturity = #{daysToMaturity},
+            tenor_bucket = #{tenorBucket},
+            ir_tenor_bucket = #{irTenorBucket},
+            holdings_period = #{holdingsPeriod},
+            rank = #{rank},
+            interest_in_hkd = #{interestInHkd},
+            notional_in_base_currency = #{notionalInBaseCurrency},
+            type = #{type},
+            boc = #{boc},
+            scb = #{scb},
+            hsbc = #{hsbc},
+            ccba = #{ccba},
+            des = #{des},
+            max_diff = #{maxDiff},
+            auction_ave = #{auctionAve},
+            auction_high = #{auctionHigh},
+            t_day = #{tDay},
+            trade_no_old = #{tradeNoOld},
+            day_count_2 = #{dayCount2},
+            country_of_domicile_hd = #{countryOfDomicileHd},
+            country_of_domicile = #{countryOfDomicile},
+            bbg_issued_amount_hd = #{bbgIssuedAmountHd},
+            bbg_issued_amount = #{bbgIssuedAmount},
+            bbg_private_placement_hd = #{bbgPrivatePlacementHd},
+            bbg_private_placement = #{bbgPrivatePlacement},
+            next_coupon_date_hc = #{nextCouponDateHc},
+            next_coupon_date = #{nextCouponDate},
+            issuer_rating = #{issuerRating},
+            parent_id = #{parentId},
+            issuer_country = #{issuerCountry},
+            country_of_incorporation = #{countryOfIncorporation},
+            report_date = #{reportDate},
+            risk_report_date = #{riskReportDate},
+            face_amount_in_hkd = #{faceAmountInHkd},
+            face_amount_in_usd = #{faceAmountInUsd},
+            country_rating = #{countryRating},
+            instrument = #{instrument},
+            asset_type_rank = #{assetTypeRank},
+            booking = #{booking},
+            month_end_booking_check = #{monthEndBookingCheck},
+            next_interest = #{nextInterest},
+            payment_status = #{paymentStatus},
+            journal_status = #{journalStatus},
+            journal_sequence = #{journalSequence},
+            order_id = #{orderId},
+            stream_No = #{streamNo},
+            exist_Company = #{existCompany},
+            exist_accrual = #{existAccrual},
+            updated_by = #{updatedBy},
+            updated_time = #{updatedTime}
+        WHERE trade_number = #{tradeNumber}
+    </update>
+
+    <!-- 删除交易流水 -->
+    <delete id="deleteByTradeNumber">
+        DELETE FROM tms_trade_blotter
+        WHERE trade_number = #{tradeNumber}
+    </delete>
+
+    <!-- 根据条件统计交易流水数量 -->
+    <select id="countByCondition" resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM tms_trade_blotter
+        <where>
+            <if test="condition.remark != null and condition.remark != ''">
+                AND remark = #{condition.remark}
+            </if>
+            <if test="condition.buySellBorrowLend != null and condition.buySellBorrowLend != ''">
+                AND buy_sell_borrow_lend = #{condition.buySellBorrowLend}
+            </if>
+            <if test="condition.tradeNumber != null and condition.tradeNumber != ''">
+                AND trade_number LIKE CONCAT('%', #{condition.tradeNumber}, '%')
+            </if>
+            <if test="condition.tradeDateStart != null">
+                AND trade_date &gt;= #{condition.tradeDateStart}
+            </if>
+            <if test="condition.tradeDateEnd != null">
+                AND trade_date &lt;= #{condition.tradeDateEnd}
+            </if>
+            <if test="condition.valueDateStart != null">
+                AND value_date &gt;= #{condition.valueDateStart}
+            </if>
+            <if test="condition.valueDateEnd != null">
+                AND value_date &lt;= #{condition.valueDateEnd}
+            </if>
+            <if test="condition.maturityDateStart != null">
+                AND maturity_date &gt;= #{condition.maturityDateStart}
+            </if>
+            <if test="condition.maturityDateEnd != null">
+                AND maturity_date &lt;= #{condition.maturityDateEnd}
+            </if>
+            <if test="condition.currency != null and condition.currency != ''">
+                AND currency = #{condition.currency}
+            </if>
+            <if test="condition.settlementAmountMin != null">
+                AND settlement_amount &gt;= #{condition.settlementAmountMin}
+            </if>
+            <if test="condition.settlementAmountMax != null">
+                AND settlement_amount &lt;= #{condition.settlementAmountMax}
+            </if>
+            <if test="condition.isin != null and condition.isin != ''">
+                AND isin = #{condition.isin}
+            </if>
+            <if test="condition.paymentStatus != null and condition.paymentStatus != ''">
+                AND payment_status = #{condition.paymentStatus}
+            </if>
+            <if test="condition.journalStatus != null and condition.journalStatus != ''">
+                AND journal_status = #{condition.journalStatus}
+            </if>
+            <if test="condition.journalSequence != null and condition.journalSequence != ''">
+                AND journal_sequence LIKE CONCAT('%', #{condition.journalSequence}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectUnconfirmedTrades" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tms_trade_blotter
+        WHERE payment_status IS NULL OR payment_status = '未确认'
+    </select>
+
+    <!-- 查询所有不重复的ISIN -->
+    <select id="selectAllIsin" resultType="java.lang.String">
+        SELECT DISTINCT isin
+        FROM tms_trade_blotter
+        WHERE isin IS NOT NULL
+        AND isin != ''
+        ORDER BY isin
+    </select>
+</mapper> 

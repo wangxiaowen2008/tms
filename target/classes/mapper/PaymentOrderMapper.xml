@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.PaymentOrderMapper">
+
+    <!-- 结果映射 -->
+    <resultMap id="BaseResultMap" type="com.paob.tms.model.PaymentOrder">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="order_number" property="orderNumber" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="service_period" property="servicePeriod" jdbcType="VARCHAR"/>
+        <result column="unit_price" property="unitPrice" jdbcType="DECIMAL"/>
+        <result column="total_amount" property="totalAmount" jdbcType="DECIMAL"/>
+        <result column="payment_method" property="paymentMethod" jdbcType="VARCHAR"/>
+        <result column="payment_status" property="paymentStatus" jdbcType="VARCHAR"/>
+        <result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP"/>
+        <result column="third_party_order_no" property="thirdPartyOrderNo" jdbcType="VARCHAR"/>
+        <result column="qr_code_url" property="qrCodeUrl" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 基础字段 -->
+    <sql id="Base_Column_List">
+        id, order_number, user_id, product_name, service_period, unit_price, total_amount,
+        payment_method, payment_status, payment_time, third_party_order_no, qr_code_url,
+        remark, create_time, update_time, is_deleted
+    </sql>
+
+    <!-- 根据订单号查询支付订单 -->
+    <select id="selectByOrderNumber" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_payment_order
+        WHERE order_number = #{orderNumber}
+        AND is_deleted = 0
+    </select>
+
+    <!-- 分页查询用户支付订单 -->
+    <select id="selectPageByUserId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_payment_order
+        WHERE user_id = #{userId}
+        AND is_deleted = 0
+        ORDER BY create_time DESC
+    </select>
+
+    <!-- 根据第三方支付订单号查询 -->
+    <select id="selectByThirdPartyOrderNo" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_payment_order
+        WHERE third_party_order_no = #{thirdPartyOrderNo}
+        AND is_deleted = 0
+    </select>
+
+</mapper> 

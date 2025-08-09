@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paob.tms.mapper.TmsCitJournalMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.paob.tms.model.TmsCitJournal">
+        <id column="tms_cit_journal_id" property="tmsCitJournalId"/>
+        <result column="tms_posting_rule_id" property="tmsPostingRuleId"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="journal_sequence" property="journalSequence"/>
+        <result column="effective_date" property="effectiveDate"/>
+        <result column="cur_no" property="curNo"/>
+        <result column="segment1" property="segment1"/>
+        <result column="segment2" property="segment2"/>
+        <result column="segment3" property="segment3"/>
+        <result column="segment4" property="segment4"/>
+        <result column="segment5" property="segment5"/>
+        <result column="segment6" property="segment6"/>
+        <result column="segment7" property="segment7"/>
+        <result column="segment8" property="segment8"/>
+        <result column="segment9" property="segment9"/>
+        <result column="entered_dr" property="enteredDr"/>
+        <result column="entered_cr" property="enteredCr"/>
+        <result column="accounted_dr" property="accountedDr"/>
+        <result column="accounted_cr" property="accountedCr"/>
+        <result column="p_entered_dr" property="pEnteredDr"/>
+        <result column="p_entered_cr" property="pEnteredCr"/>
+        <result column="journal_line_description" property="journalLineDescription"/>
+        <result column="journal_status" property="journalStatus"/>
+        <result column="write_offs" property="writeOffs"/>
+        <result column="ready_state" property="readyState"/>
+        <result column="data_state" property="dataState"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_by" property="updatedBy"/>
+        <result column="updated_time" property="updatedTime"/>
+        <result column="data_source" property="dataSource"/>
+        <result column="data_id" property="dataId"/>
+        <result column="balance_status" property="balanceStatus"/>
+        <result column="secur_no" property="securNo"/>
+        <result column="secur_type" property="securType"/>
+        <result column="market_no" property="marketNo"/>
+        <result column="deal_number" property="dealNumber"/>
+        <result column="books_no" property="booksNo"/>
+        <result column="segment10" property="segment10"/>
+        <result column="segment11" property="segment11"/>
+        <result column="segment12" property="segment12"/>
+        <result column="segment13" property="segment13"/>
+        <result column="segment14" property="segment14"/>
+        <result column="msg" property="msg"/>
+        <result column="attribute7" property="attribute7"/>
+        <result column="attribute1" property="attribute1"/>
+        <result column="attribute2" property="attribute2"/>
+        <result column="attribute3" property="attribute3"/>
+        <result column="attribute4" property="attribute4"/>
+        <result column="attribute5" property="attribute5"/>
+        <result column="attribute6" property="attribute6"/>
+        <result column="attribute8" property="attribute8"/>
+        <result column="attribute9" property="attribute9"/>
+        <result column="attribute10" property="attribute10"/>
+        <result column="flexible_status" property="flexibleStatus"/>
+        <result column="journal_source" property="journalSource"/>
+        <result column="journal_temp" property="journalTemp"/>
+        <result column="journal_name" property="journalName"/>
+        <result column="check_by" property="checkBy"/>
+        <result column="check_date" property="checkDate"/>
+        <result column="record_person" property="recordPerson"/>
+        <result column="business_id" property="businessId"/>
+    </resultMap>
+
+    <!-- 查询凭证列表 -->
+    <select id="selectJournalList" resultMap="BaseResultMap" fetchSize="10000">
+        SELECT DISTINCT journal_sequence, effective_date, books_no, segment1, journal_name, journal_status, flexible_status,
+        created_by, check_by
+        FROM tms_cit_journal
+        <where>
+            <if test="req.booksNo != null and req.booksNo != ''">
+                AND books_no = #{req.booksNo}
+            </if>
+            <if test="req.segment1 != null and req.segment1 != ''">
+                AND segment1 = #{req.segment1}
+            </if>
+            <if test="req.effectiveDateStart != null">
+                AND effective_date >= #{req.effectiveDateStart}
+            </if>
+            <if test="req.effectiveDateEnd != null">
+                AND effective_date &lt;= #{req.effectiveDateEnd}
+            </if>
+            <if test="req.curNo != null and req.curNo != ''">
+                AND cur_no = #{req.curNo}
+            </if>
+            <if test="req.amountMin != null">
+                AND entered_dr >= #{req.amountMin}
+            </if>
+            <if test="req.amountMax != null">
+                AND entered_dr &lt;= #{req.amountMax}
+            </if>
+            <if test="req.journalSequence != null and req.journalSequence != ''">
+                AND journal_sequence LIKE CONCAT('%', #{req.journalSequence}, '%')
+            </if>
+            <if test="req.journalStatus != null and req.journalStatus != ''">
+                AND journal_status = #{req.journalStatus}
+            </if>
+            <if test="req.checkBy != null and req.checkBy != ''">
+                AND check_by = #{req.checkBy}
+            </if>
+        </where>
+        ORDER BY effective_date DESC, journal_sequence DESC
+    </select>
+
+    <!-- 查询凭证列表（导出用） -->
+    <select id="selectJournalListForExport" resultMap="BaseResultMap" fetchSize="10000">
+        SELECT *
+        FROM tms_cit_journal
+        <where>
+            <if test="req.booksNo != null and req.booksNo != ''">
+                AND books_no = #{req.booksNo}
+            </if>
+            <if test="req.segment1 != null and req.segment1 != ''">
+                AND segment1 = #{req.segment1}
+            </if>
+            <if test="req.effectiveDateStart != null">
+                AND effective_date >= #{req.effectiveDateStart}
+            </if>
+            <if test="req.effectiveDateEnd != null">
+                AND effective_date &lt;= #{req.effectiveDateEnd}
+            </if>
+            <if test="req.curNo != null and req.curNo != ''">
+                AND cur_no = #{req.curNo}
+            </if>
+            <if test="req.amountMin != null">
+                AND entered_dr >= #{req.amountMin}
+            </if>
+            <if test="req.amountMax != null">
+                AND entered_dr &lt;= #{req.amountMax}
+            </if>
+            <if test="req.journalSequence != null and req.journalSequence != ''">
+                AND journal_sequence LIKE CONCAT('%', #{req.journalSequence}, '%')
+            </if>
+            <if test="req.journalStatus != null and req.journalStatus != ''">
+                AND journal_status = #{req.journalStatus}
+            </if>
+            <if test="req.checkBy != null and req.checkBy != ''">
+                AND check_by = #{req.checkBy}
+            </if>
+        </where>
+        ORDER BY effective_date DESC, journal_sequence DESC
+    </select>
+
+    <!-- 查询凭证详情列表 -->
+    <select id="selectJournalDetailList" resultMap="BaseResultMap" fetchSize="10000">
+        SELECT *
+        FROM tms_cit_journal
+        <where>
+            <if test="journalSequence != null and journalSequence != ''">
+                AND journal_sequence = #{journalSequence}
+            </if>
+        </where>
+        ORDER BY effective_date DESC
+    </select>
+
+</mapper> 

@@ -1,0 +1,79 @@
+server:
+  port: 8080
+
+swagger:
+  enable: true
+  title: TMS系统API文档
+  description: TMS系统后端接口文档
+  version: 1.0.0
+  base-package: com.paob.tms.web.controller
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/tms?characterEncoding=utf8&useUnicode=true&serverTimezone=Asia/Shanghai&defaultRowFetchSize=10000&reWriteBatchedInserts=true&cachePrepStmts=true&prepStmtCacheSize=250&prepStmtCacheSqlLimit=2048&useServerPrepStmts=true
+    username: postgres
+    hikari:
+      pool-name: HikariCP_master
+      maximum-pool-size: 50
+      minimum-idle: 10
+      connection-timeout: 3000
+      validation-timeout: 2000
+      leak-detection-threshold: 60000
+      max-lifetime: 900000
+      connection-test-query: SELECT 1
+  profiles:
+    active: dev
+  task:
+    scheduling:
+      pool:
+        size: 5
+      thread-name-prefix: tms-scheduling-
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui/index.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.paob.tms.web.controller
+
+logging:
+  level:
+    root: info
+    com.paob.tms: info
+    org.springframework: info
+    org.hibernate: info
+    org.mybatis: info
+    com.zaxxer.hikari: info
+    org.postgresql: info
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.paob.tms.model
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# 文件上传配置
+file:
+  upload:
+    path: ${user.home}/tms/upload
+  template:
+    path: ${user.home}/tms/template/凭证模板.xlsx
+
+# 凭证文件配置
+voucher:
+  file:
+    path: D:/work/paob_tms1/keys
+    useJavaEncrypt: false
