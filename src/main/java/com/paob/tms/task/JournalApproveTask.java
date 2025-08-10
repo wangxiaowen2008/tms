@@ -61,7 +61,7 @@ public class JournalApproveTask {
 
                 // 更新凭证主表状态
                 TmsCitJournal journal = citJournalMapper.selectById(detail.getJournalId());
-                if (journal != null) {
+                (journal != null) {
                     journal.setJournalStatus("4"); // 已复核状态
                     citJournalMapper.updateById(journal);
                 }
