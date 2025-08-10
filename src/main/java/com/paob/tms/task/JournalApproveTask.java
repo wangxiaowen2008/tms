@@ -73,15 +73,20 @@ public class JournalApproveTask {
         }
     }
 
-    public String processData(String input) {
-        // BugBot 会检测出：input 可能为 null
-        return input.toUpperCase(); // 风险：如果 input 为 null 会抛出 NPE
+     @Autowired
+    private JdbcTemplate jdbcTemplate;
+    
+    // BugBot 应该能检测出：SQL 注入风险
+    public List<User> findUserByUsername(String username) {
+        // 危险：直接拼接用户输入到 SQL 中
+        String sql = "SELECT * FROM users WHERE username = '" + username + "'";
+        return jdbcTemplate.query(sql, new UserRowMapper());
     }
     
-    public void processList(List<String> list) {
-        // BugBot 会检测出：list 可能为 null
-        for (String item : list) { // 风险：如果 list 为 null 会抛出 NPE
-            System.out.println(item);
-        }
+    // BugBot 应该能检测出：SQL 注入风险
+    public void deleteUser(String userId) {
+        // 危险：用户输入直接拼接到 SQL 中
+        String sql = "DELETE FROM users WHERE id = " + userId;
+        jdbcTemplate.execute(sql);
     }
 } 
