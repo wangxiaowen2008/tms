@@ -10,9 +10,13 @@ import com.paob.tms.util.VoucherFileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Slf4j
@@ -73,20 +77,52 @@ public class JournalApproveTask {
         }
     }
 
-     @Autowired
+    @Autowired
     private JdbcTemplate jdbcTemplate;
     
-    // BugBot 应该能检测出：SQL 注入风险
+    /**
+     * 根据用户名查找用户 - 使用参数化查询防止SQL注入
+     * @param username 用户名
+     * @return 用户列表
+     */
     public List<User> findUserByUsername(String username) {
-        // 危险：直接拼接用户输入到 SQL 中
-        String sql = "SELECT * FROM users WHERE username = '" + username + "'";
-        return jdbcTemplate.query(sql, new UserRowMapper());
+        // 修复：使用参数化查询防止SQL注入
+        String sql = "SELECT * FROM users WHERE username = ?";
+        return jdbcTemplate.query(sql, new UserRowMapper(), username);
     }
     
-    // BugBot 应该能检测出：SQL 注入风险
+    /**
+     * 根据用户ID删除用户 - 使用参数化查询防止SQL注入
+     * @param userId 用户ID
+     */
     public void deleteUser(String userId) {
-        // 危险：用户输入直接拼接到 SQL 中
-        String sql = "DELETE FROM users WHERE id = " + userId;
-        jdbcTemplate.execute(sql);
+        // 修复：使用参数化查询防止SQL注入
+        String sql = "DELETE FROM users WHERE id = ?";
+        jdbcTemplate.update(sql, userId);
+    }
+    
+    /**
+     * 用户行映射器
+     */
+    private static class UserRowMapper implements RowMapper<User> {
+        @Override
+        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+            User user = new User();
+            // 根据实际的用户表结构设置属性
+            // user.setId(rs.getLong("id"));
+            // user.setUsername(rs.getString("username"));
+            // 添加其他必要的属性设置
+            return user;
+        }
+    }
+    
+    /**
+     * 用户实体类
+     */
+    public static class User {
+        // 添加必要的用户属性
+        // private Long id;
+        // private String username;
+        // 添加getter和setter方法
     }
 } 
