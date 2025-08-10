@@ -34,7 +34,7 @@ dd if=$dataFile 2>/dev/null | openssl des3 -d -salt -kfile $decrypt_pwdFile > $L
 tar -zxvf $Lv_temp_archive
 
 # 如果指定了输出文件名，则重命名解压后的文件
-if [ ! -z "$Lv_output_fileName" ]; then
+if [ ! -z "$Lv_output_fileName" ]; 
     # 获取压缩包内的文件名 (假设只有一个文件)
     EXTRACTED_FILE=$(tar -tf $Lv_temp_archive | head -n 1)
     if [ ! -z "$EXTRACTED_FILE" ] && [ -f "$EXTRACTED_FILE" ]; then
