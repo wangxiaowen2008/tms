@@ -60,7 +60,8 @@ public class JournalApproveTask {
                 voucherDetailMapper.updateById(detail);
 
                 // 更新凭证主表状态
-                (journal != null) {
+                TmsCitJournal journal = citJournalMapper.selectById(detail.getJournalId());
+                if (journal != null) {
                     journal.setJournalStatus("4"); // 已复核状态
                     citJournalMapper.updateById(journal);
                 }
@@ -69,6 +70,18 @@ public class JournalApproveTask {
             log.info("凭证自动审批任务执行完成");
         } catch (Exception e) {
             log.error("凭证自动审批任务执行失败", e);
+        }
+    }
+
+    public String processData(String input) {
+        // BugBot 会检测出：input 可能为 null
+        return input.toUpperCase(); // 风险：如果 input 为 null 会抛出 NPE
+    }
+    
+    public void processList(List<String> list) {
+        // BugBot 会检测出：list 可能为 null
+        for (String item : list) { // 风险：如果 list 为 null 会抛出 NPE
+            System.out.println(item);
         }
     }
 } 
