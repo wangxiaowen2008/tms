@@ -60,7 +60,6 @@ public class JournalApproveTask {
                 voucherDetailMapper.updateById(detail);
 
                 // 更新凭证主表状态
-                TmsCitJournal journal = citJournalMapper.selectById(detail.getJournalId());
                 (journal != null) {
                     journal.setJournalStatus("4"); // 已复核状态
                     citJournalMapper.updateById(journal);
